@@ -1,10 +1,8 @@
-import { useState, useMemo, useCallback, useRef } from "react";
+import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import listenBear from "/src/assets/cute-bear.gif";
 import musicBear from "/src/assets/music-bear.gif";
-import gift1 from "/src/assets/gift/gift1.png";
-import gift2 from "/src/assets/gift/gift2.png";
-import gift3 from "/src/assets/gift/gift3.png";
+import gift from "/src/assets/gift/gift.jpg";
 
 import comfortBear from "/src/assets/comfort-bear.gif";
 import kissBear from "/src/assets/kiss-bears.gif";
@@ -17,12 +15,6 @@ import childGif from "/src/assets/child.gif";
 import leftButtonImg from "/src/assets/left-button.png";
 import rightButtonImg from "/src/assets/right-button.png";
 
-import couplePic1 from "/src/assets/couple_photo/couple_photo_1.jpg";
-import couplePic2 from "/src/assets/couple_photo/couple_photo_2.jpg";
-import couplePic3 from "/src/assets/couple_photo/couple_photo_3.jpg";
-import couplePic4 from "/src/assets/couple_photo/couple_photo_4.jpg";
-import couplePic5 from "/src/assets/couple_photo/couple_photo_5.jpg";
-import couplePic6 from "/src/assets/couple_photo/couple_photo_6.jpg";
 import loveYouBear from "/src/assets/love-you-bear.gif";
 
 import ghajiniCover from "/src/assets/ghajini.jpg";
@@ -37,6 +29,9 @@ import kadhalKanave from "/src/assets/Kadhal-Kanave.mp3";
 import unakagathanae from "/src/assets/Unakagathanae.mp3";
 import aasaOrave from "/src/assets/Aasa-Orave.mp3";
 
+import FormPage from "./FormPage.jsx";
+import "./FormPage.css";
+
 function App() {
   const [noLabel, setNoLabel] = useState("NO 💔");
   const [showHoverPopup, setShowHoverPopup] = useState(false);
@@ -44,9 +39,19 @@ function App() {
   const [showProsConsPopup, setShowProsConsPopup] = useState(false);
   const [hoveredOnce, setHoveredOnce] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [view, setView] = useState("home");
+  const [view, setView] = useState("form");
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
   const [giftsOpened, setGiftsOpened] = useState(new Set());
+
+  // Form data state
+  const [formData, setFormData] = useState({
+    receiverName: "",
+    senderName: "",
+    nickname: "",
+    letterPart1: "",
+    letterPart2: "",
+    letterPart3: "",
+  });
 
   // Media player state
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
@@ -56,6 +61,29 @@ function App() {
   const [volume, setVolume] = useState(1);
 
   const audioRef = useRef(null);
+
+  // URL parameter handling
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const receiver = urlParams.get("receiver");
+    const sender = urlParams.get("sender");
+    const nickname = urlParams.get("nickname");
+    const letter1 = urlParams.get("letter1");
+    const letter2 = urlParams.get("letter2");
+    const letter3 = urlParams.get("letter3");
+
+    if (receiver && sender && nickname && letter1 && letter2 && letter3) {
+      setFormData({
+        receiverName: receiver,
+        senderName: sender,
+        nickname: nickname,
+        letterPart1: letter1,
+        letterPart2: letter2,
+        letterPart3: letter3,
+      });
+      setView("home");
+    }
+  }, []);
 
   // Song data for media player
   const songs = useMemo(
@@ -339,7 +367,8 @@ function App() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            Click here for the Valentine gifts, Patootie
+            Click here for the Valentine gifts,{" "}
+            {formData.nickname || "Patootie"}
           </motion.button>
         </div>
       </div>
@@ -356,21 +385,14 @@ function App() {
             <div className="gift-card" onClick={handleGift1Click}>
               <h3 className="gift-title">Gift 1</h3>
               <div className="gift-image">
-                <img src={gift1} alt="gift 1" loading="lazy" />
+                <img src={gift} alt="gift 1" loading="lazy" />
               </div>
             </div>
 
             <div className="gift-card" onClick={handleGift2Click}>
               <h3 className="gift-title">Gift 2</h3>
               <div className="gift-image">
-                <img src={gift2} alt="gift 2" loading="lazy" />
-              </div>
-            </div>
-
-            <div className="gift-card" onClick={handleGift3Click}>
-              <h3 className="gift-title">Gift 3</h3>
-              <div className="gift-image">
-                <img src={gift3} alt="gift 3" loading="lazy" />
+                <img src={gift} alt="gift 2" loading="lazy" />
               </div>
             </div>
           </div>
@@ -382,7 +404,7 @@ function App() {
               </div>
               <p className="all-gifts-text">
                 Yayyyy!! You opened all the gifts! <br />
-                LOVE YOU SO MUCH PATOOTIEE!❤️
+                LOVE YOU SO MUCH {formData.nickname || "PATOOTIEE"}!❤️
               </p>
             </div>
           ) : (
@@ -576,7 +598,7 @@ function App() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="photo-frame vintage-1">
-                <img src={couplePic1} alt="Memory 1" loading="lazy" />
+                <img src={photoBear} alt="Memory 1" loading="lazy" />
               </div>
               <p className="photo-caption">Our first special moment together</p>
             </motion.div>
@@ -587,7 +609,7 @@ function App() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="photo-frame vintage-2">
-                <img src={couplePic4} alt="Memory 2" loading="lazy" />
+                <img src={kissBear} alt="Memory 2" loading="lazy" />
               </div>
               <p className="photo-caption">When you made me smile like this</p>
             </motion.div>
@@ -598,7 +620,7 @@ function App() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="photo-frame vintage-3">
-                <img src={couplePic3} alt="Memory 3" loading="lazy" />
+                <img src={musicBear} alt="Memory 3" loading="lazy" />
               </div>
               <p className="photo-caption">Our favorite music moments</p>
             </motion.div>
@@ -609,7 +631,7 @@ function App() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="photo-frame vintage-4">
-                <img src={couplePic6} alt="Memory 4" loading="lazy" />
+                <img src={comfortBear} alt="Memory 4" loading="lazy" />
               </div>
               <p className="photo-caption">Your comforting presence</p>
             </motion.div>
@@ -620,7 +642,7 @@ function App() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="photo-frame vintage-5">
-                <img src={couplePic2} alt="Memory 5" loading="lazy" />
+                <img src={cookBear} alt="Memory 5" loading="lazy" />
               </div>
               <p className="photo-caption">Cooking memories together</p>
             </motion.div>
@@ -631,7 +653,7 @@ function App() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="photo-frame vintage-6">
-                <img src={couplePic5} alt="Memory 6" loading="lazy" />
+                <img src={listenBear} alt="Memory 6" loading="lazy" />
               </div>
               <p className="photo-caption">Our heart-to-heart talks</p>
             </motion.div>
@@ -650,7 +672,9 @@ function App() {
     return (
       <div className="valentine-root letter">
         <div className="card letter-card">
-          <h1 className="yay">To the Girl I Love most!❤️</h1>
+          <h1 className="yay">
+            To {formData.receiverName || "the Girl I Love"}!❤️
+          </h1>
           <motion.div
             className="envelope-container"
             initial={{ opacity: 0, y: 20 }}
@@ -681,23 +705,25 @@ function App() {
                 transition={{ duration: 0.6, ease: "easeInOut" }}
               >
                 <div className="letter-content">
-                  <h2 className="letter-title">My Dearest Patootie,</h2>
+                  <h2 className="letter-title">
+                    My Dearest {formData.nickname || "Patootie"},
+                  </h2>
                   <p className="letter-text">
-                    I fell for you in a way I never expected, and now every day
-                    feels brighter just because you're in it.
+                    {formData.letterPart1 ||
+                      "I fell for you in a way I never expected, and now every day feels brighter just because you're in it."}
                   </p>
                   <p className="letter-text">
-                    Loving you comes so naturally. It's in your smile, your
-                    laugh, and the comfort I feel whenever I'm with you.
+                    {formData.letterPart2 ||
+                      "Loving you comes so naturally. It's in your smile, your laugh, and the comfort I feel whenever I'm with you."}
                   </p>
                   <p className="letter-text">
-                    You are my favorite part of every moment, and the best thing
-                    that ever happened to me.
+                    {formData.letterPart3 ||
+                      "You are my favorite part of every moment, and the best thing that ever happened to me."}
                   </p>
                   <p className="letter-signature">
                     Forever yours,
                     <br />
-                    Ram
+                    {formData.senderName || "Ram"}
                   </p>
                 </div>
               </motion.div>
@@ -710,6 +736,17 @@ function App() {
           </button>
         </div>
       </div>
+    );
+  }
+
+  if (view === "form") {
+    return (
+      <FormPage
+        onSubmit={(data) => {
+          setFormData(data);
+          setView("home");
+        }}
+      />
     );
   }
 
@@ -743,7 +780,9 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <span className="name">PATOOTIEEE,</span>
+            <span className="name">
+              {formData.receiverName || "PATOOTIEEE"}
+            </span>
             <span className="ask"> Will you be my Valentine?😩❤️</span>
             <span className="hearts"> </span>
           </motion.h1>

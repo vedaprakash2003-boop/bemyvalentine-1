@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 
 * {
   box-sizing: border-box;
@@ -435,7 +435,8 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -471,10 +472,9 @@ body {
   text-shadow: 0 2px 4px rgba(255, 122, 162, 0.3);
 }
 
-
 .gifts-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 25px;
   margin: 25px 0 35px 0;
   width: 100%;
@@ -789,9 +789,15 @@ body {
 }
 
 @keyframes pulse {
-  0% { opacity: 0.8; }
-  50% { opacity: 1; }
-  100% { opacity: 0.8; }
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
 }
 
 .control-buttons {
@@ -977,21 +983,309 @@ body {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .album-art-frame {
     width: 180px;
     height: 180px;
   }
-  
+
   .album-title {
     font-size: 20px;
   }
-  
+
   .current-title {
     font-size: 24px;
   }
-  
+
   .volume-bar-container {
     width: 120px;
+  }
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 480px) {
+  /* Form Page */
+  .form-card {
+    padding: 25px 15px;
+    max-width: 100%;
+    margin: 0 10px;
+  }
+
+  .form-title {
+    font-size: 28px;
+  }
+
+  .form-subtitle {
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 16px; /* Prevent iOS zoom */
+    padding: 12px 14px;
+  }
+
+  .create-btn {
+    padding: 14px 30px;
+    font-size: 16px;
+  }
+
+  .url-container {
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .url-input {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .copy-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  /* Main Valentine Page */
+  .card {
+    padding: 25px 20px;
+    margin: 10px;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .choices {
+    gap: 15px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  /* Gifts Page */
+  .gifts-card {
+    padding: 25px 20px;
+  }
+
+  .gifts-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .gift-card {
+    padding: 15px;
+  }
+
+  .gift-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .gift-title {
+    font-size: 18px;
+  }
+
+  /* Media Player */
+  .media-player {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .album-art-frame {
+    width: 160px;
+    height: 160px;
+  }
+
+  .album-title {
+    font-size: 20px;
+  }
+
+  .current-title {
+    font-size: 22px;
+  }
+
+  .control-buttons {
+    gap: 15px;
+  }
+
+  .control-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .play-btn-large {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .volume-bar-container {
+    width: 100px;
+  }
+
+  /* Photos Page */
+  .photos-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .photo-card {
+    padding: 15px;
+  }
+
+  .photo-frame {
+    width: 100%;
+    height: 200px;
+  }
+
+  /* Letter Page */
+  .envelope-container {
+    max-width: 90vw;
+  }
+
+  .envelope {
+    transform: scale(0.8);
+  }
+
+  .letter-content {
+    padding: 15px;
+  }
+
+  .letter-title {
+    font-size: 20px;
+  }
+
+  .letter-text {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Pros/Cons Popup */
+  .pros-cons-popup {
+    width: 95vw;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .pros-list {
+    gap: 15px;
+  }
+
+  .pro-item {
+    padding: 15px;
+  }
+
+  .pro-gif {
+    width: 40px;
+    height: 40px;
+  }
+
+  .pro-text {
+    font-size: 14px;
+  }
+
+  /* Slides Popup */
+  .slides-popup {
+    width: 95vw;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .slide-gif {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .slide-text {
+    font-size: 16px;
+  }
+
+  /* Hover Popup */
+  .popup {
+    width: 90vw;
+    padding: 25px;
+    margin: 10px;
+  }
+
+  .popup-text {
+    font-size: 20px;
+  }
+
+  .okay-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+
+  /* Success Page */
+  .success-card {
+    padding: 25px 20px;
+  }
+
+  .yay {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .romantic-gift-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  /* All Gifts Opened */
+  .all-gifts-opened {
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  .love-you-bear-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .all-gifts-text {
+    font-size: 20px;
+  }
+
+  /* General Mobile Adjustments */
+  body {
+    padding-bottom: 20px;
+  }
+
+  .valentine-root {
+    padding: 10px;
+  }
+
+  /* Prevent zoom on form inputs */
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-size: 16px;
+  }
+
+  /* Better touch targets */
+  button {
+    min-height: 44px; /* iOS minimum touch target */
+    min-width: 44px;
+  }
+
+  /* Scroll improvements */
+  html {
+    -webkit-overflow-scrolling: touch;
   }
 }
