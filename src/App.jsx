@@ -165,7 +165,7 @@ function App() {
         text: "Live singing performances… just for you 🎶😉",
       },
     ],
-    [bearKissGif, cuteBeaRoses],
+    [],
   );
 
   const handleNoEnter = useCallback(() => {
