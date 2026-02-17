@@ -1,33 +1,33 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import listenBear from "/src/assets/cute-bear.gif";
-import musicBear from "/src/assets/music-bear.gif";
-import gift from "/src/assets/gift/gift.jpg";
+import listenBear from "./assets/cute-bear.gif";
+import musicBear from "./assets/music-bear.gif";
+import gift from "./assets/gift/gift.jpg";
 
-import comfortBear from "/src/assets/comfort-bear.gif";
-import kissBear from "/src/assets/kiss-bears.gif";
-import cookBear from "/src/assets/cook-bear.gif";
-import bearKissGif from "/src/assets/kiss-bear.gif";
-import photoBear from "/src/assets/photo-bear.gif";
-import cuteBeaRoses from "/src/assets/rose-bear.gif";
-import childGif from "/src/assets/child.gif";
+import comfortBear from "./assets/comfort-bear.gif";
+import kissBear from "./assets/kiss-bears.gif";
+import cookBear from "./assets/cook-bear.gif";
+import bearKissGif from "./assets/kiss-bear.gif";
+import photoBear from "./assets/photo-bear.gif";
+import cuteBeaRoses from "./assets/rose-bear.gif";
+import childGif from "./assets/child.gif";
 
-import leftButtonImg from "/src/assets/left-button.png";
-import rightButtonImg from "/src/assets/right-button.png";
+import leftButtonImg from "./assets/left-button.png";
+import rightButtonImg from "./assets/right-button.png";
 
-import loveYouBear from "/src/assets/love-you-bear.gif";
+import loveYouBear from "./assets/love-you-bear.gif";
 
-import ghajiniCover from "/src/assets/ghajini.jpg";
-import aasaCover from "/src/assets/aasa_orave.jpg";
-import cuckooCover from "/src/assets/cuckoo.jpg";
-import katradhuTamizhCover from "/src/assets/katradhu-tamizh.jpg";
-import mundasupattiCover from "/src/assets/mundasupatti.jpg";
+import ghajiniCover from "./assets/ghajini.jpg";
+import aasaCover from "./assets/aasa_orave.jpg";
+import cuckooCover from "./assets/cuckoo.jpg";
+import katradhuTamizhCover from "./assets/katradhu-tamizh.jpg";
+import mundasupattiCover from "./assets/mundasupatti.jpg";
 
-import oruMaalai from "/src/assets/Oru-Maalai.mp3";
-import agasatha from "/src/assets/Agasatha.mp3";
-import kadhalKanave from "/src/assets/Kadhal-Kanave.mp3";
-import unakagathanae from "/src/assets/Unakagathanae.mp3";
-import aasaOrave from "/src/assets/Aasa-Orave.mp3";
+import oruMaalai from "./assets/Oru-Maalai.mp3";
+import agasatha from "./assets/Agasatha.mp3";
+import kadhalKanave from "./assets/Kadhal-Kanave.mp3";
+import unakagathanae from "./assets/Unakagathanae.mp3";
+import aasaOrave from "./assets/Aasa-Orave.mp3";
 
 import FormPage from "./FormPage.jsx";
 import "./FormPage.css";
